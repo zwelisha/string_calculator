@@ -13,6 +13,9 @@ function sumNumbers(numbers) {
  * delimiter number
  */
 function getDelimNumbers(stringInput) {
+    if (stringInput.indexOf("\\") == -1) {
+        return null;
+    }
     var splitByNewLine = stringInput.split("\n");
     var delimeterNumbers = splitByNewLine[0].match(numbersRegex);
     return delimeterNumbers;
@@ -21,8 +24,11 @@ function getDelimNumbers(stringInput) {
 function add(stringInput) {
     var finalNumbers = [];
     var delimiterNumbers = getDelimNumbers(stringInput);
+    console.log(delimiterNumbers);
     if (delimiterNumbers == null) {
-        finalNumbers = stringInput.match(numbersRegex).map(Number);
+        numbers = stringInput.match(numbersRegex).map(Number);
+        var total = sumNumbers(numbers);
+        return total;
     } else {
         var numbers = stringInput.match(numbersRegex);
         for (var i = 0; i < numbers.length; i++) {
@@ -44,4 +50,4 @@ function add(stringInput) {
 }
 
 
-console.log(add("//[***][%%%]\n1***2%%%3"));
+console.log(add("1,1"));
