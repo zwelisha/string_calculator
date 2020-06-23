@@ -24,7 +24,6 @@ function getDelimNumbers(stringInput) {
 function add(stringInput) {
     let finalNumbers = [];
     let delimiterNumbers = getDelimNumbers(stringInput);
-    console.log(delimiterNumbers);
     if (delimiterNumbers == null) {
         numbers = stringInput.match(numbersRegex).map(Number);
         let total = sumNumbers(numbers);
