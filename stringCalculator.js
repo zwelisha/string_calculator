@@ -1,10 +1,10 @@
 //numbers regex
-var numbersRegex = /-?\d+/g;
+let numbersRegex = /-?\d+/g;
 //Helper function to sum up a list
 function sumNumbers(numbers) {
-    var total = 0;
-    for (var i = 0; i < numbers.length; i++) {
-        total = total + numbers[i];
+    let total = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        total += numbers[i];
     }
     return total;
 }
@@ -16,36 +16,36 @@ function getDelimNumbers(stringInput) {
     if (stringInput.indexOf("\\") == -1) {
         return null;
     }
-    var splitByNewLine = stringInput.split("\n");
-    var delimeterNumbers = splitByNewLine[0].match(numbersRegex);
+    let splitByNewLine = stringInput.split("\n");
+    let delimeterNumbers = splitByNewLine[0].match(numbersRegex);
     return delimeterNumbers;
 }
 
 function add(stringInput) {
-    var finalNumbers = [];
-    var delimiterNumbers = getDelimNumbers(stringInput);
+    let finalNumbers = [];
+    let delimiterNumbers = getDelimNumbers(stringInput);
     console.log(delimiterNumbers);
     if (delimiterNumbers == null) {
         numbers = stringInput.match(numbersRegex).map(Number);
-        var total = sumNumbers(numbers);
+        let total = sumNumbers(numbers);
         return total;
     } else {
-        var numbers = stringInput.match(numbersRegex);
-        for (var i = 0; i < numbers.length; i++) {
-            var n = numbers[i];
-            for (var pos = 0; pos < delimiterNumbers.length; pos++) {
-                var currentDelimNumber = delimiterNumbers[pos];
+        let numbers = stringInput.match(numbersRegex);
+        for (let i = 0; i < numbers.length; i++) {
+            let n = numbers[i];
+            for (let pos = 0; pos < delimiterNumbers.length; pos++) {
+                let currentDelimNumber = delimiterNumbers[pos];
                 if (n != currentDelimNumber) {
-                    var nSplit = n.split(currentDelimNumber);
-                    for (var j = 0; j < nSplit.length; j++) {
-                        var finalNum = Number(nSplit[j]);
+                    let nSplit = n.split(currentDelimNumber);
+                    for (let j = 0; j < nSplit.length; j++) {
+                        let finalNum = Number(nSplit[j]);
                         finalNumbers.push(finalNum);
                     }
                 }
             }
         }
     }
-    var total = sumNumbers(finalNumbers)
+    let total = sumNumbers(finalNumbers)
     return total;
 }
 
